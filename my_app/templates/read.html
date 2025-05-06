@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>your works</title>
+{%endblock%}
+
+{% block diffrentbody%}
+<div>
+    <a href="{% url 'create' %}" class="btn btn-primary"> add task</a>
+</div>
+<div class="w-50 mx-auto mt-5">
+    <table class="table rounded-circle">
+        {% for i in items %}
+        <div class="mt-2">
+        <tr class="p-2">
+            <td class="p-3"><a href="" class="text-decoration-none text-dark">{{i.task_name}}</a></td>
+            <td class="p-3"><a href="" class="text-decoration-none text-dark">{{i.due_date}}</a></td>
+            <td class="p-3"><a href=""><i class="fa-solid fa-pencil" style="color: black;"></i></a></td>
+            <td class="p-3"><a href=""><i class="fa-solid fa-circle-check" style="color: black;"></i></a></td>
+        </tr>
+    </div>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
