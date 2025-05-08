@@ -83,7 +83,7 @@ class AddTask(View):
         return render(request,"addtask.html",{'form':form})
     
     
-@method_decorator(decorator=is_user,name='dispatch') 
+# @method_decorator(decorator=is_user,name='dispatch') 
 class TaskRead(View):
     def get(self,request):
         items=TaskModel.objects.filter(user_id=request.user)

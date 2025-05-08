@@ -8,16 +8,27 @@
     <a href="{% url 'create' %}" class="btn btn-primary"> add task</a>
 </div>
 <div class="w-50 mx-auto mt-5">
+    <h1>hi {{request.user}}</h1>
     <table class="table rounded-circle">
         {% for i in items %}
         <div class="mt-2">
-        <tr class="p-2">
-            <td class="p-3"><a href="" class="text-decoration-none text-dark">{{i.task_name}}</a></td>
+            <tr class="p-2">
+                {% if i.compleated_status%}
+                <td class="p-3"><a href=""
+                        class="text-decoration-none text-decoration-line-through text-dark">{{i.task_name}}</a></td>
+                {% else %}
+                <td class="p-3"><a href="" class="text-decoration-none text-dark">{{i.task_name}}</a></td>
+                <td class="text-muted">{{i.due_date}}</td>
+                <td><a href="{% url 'taskupdate' i.id %}">update</a></td>
+
+                {% endif %}
+
+                <!-- <td class="p-3"><a href="" class="text-decoration-none text-dark">{{i.task_name}}</a></td>
             <td class="p-3"><a href="" class="text-decoration-none text-dark">{{i.due_date}}</a></td>
             <td class="p-3"><a href=""><i class="fa-solid fa-pencil" style="color: black;"></i></a></td>
-            <td class="p-3"><a href=""><i class="fa-solid fa-circle-check" style="color: black;"></i></a></td>
-        </tr>
-    </div>
+            <td class="p-3"><a href=""><i class="fa-solid fa-circle-check" style="color: black;"></i></a></td> -->
+            </tr>
+        </div>
         {% endfor %}
     </table>
 </div>
